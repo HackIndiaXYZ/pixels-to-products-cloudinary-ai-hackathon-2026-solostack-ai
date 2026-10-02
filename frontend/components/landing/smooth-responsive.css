@@ -1,0 +1,126 @@
+/*
+  MediaGuard AI — smooth scrolling + performance/responsive layer
+  Add these rules AFTER your existing global/component CSS.
+  They intentionally do not redefine the visual theme.
+*/
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+/* Prevent accidental horizontal overflow from long labels/cards. */
+.container,
+.section,
+.hero,
+.navbar-wrap,
+.footer {
+  min-width: 0;
+}
+
+/* Keep anchored sections clear of the sticky/fixed navbar. */
+#features,
+#how-it-works,
+#cloudinary {
+  scroll-margin-top: 88px;
+}
+
+/* Reduce layout/paint work for sections that are below the fold.
+   The intrinsic size keeps the page from jumping while content is skipped. */
+.section:not(.hero),
+.trust-bar,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
+/* GPU-friendly transitions: transform/opacity are much cheaper than layout properties. */
+.btn,
+.nav-link,
+.footer-link,
+.feature-card,
+.comparison-card,
+.problem-item,
+.cloud-box,
+.flow-item {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Do not force motion on users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Small-screen safety: prevent text/cards from creating horizontal scroll. */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  #features,
+  #how-it-works,
+  #cloudinary {
+    scroll-margin-top: 76px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-title,
+  .section-title,
+  .hero-description,
+  .section-description {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Very narrow phones. */
+@media (max-width: 390px) {
+  .hero-actions,
+  .nav-actions {
+    min-width: 0;
+  }
+
+  .btn {
+    max-width: 100%;
+  }
+}

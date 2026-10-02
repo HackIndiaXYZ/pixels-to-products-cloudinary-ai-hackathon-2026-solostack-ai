@@ -1,0 +1,35 @@
+{
+  "name": "mediaguard-ai-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@clerk/express": "latest",
+    "cloudinary": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "helmet": "latest",
+    "express-rate-limit": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "multer": "latest"
+  },
+  "devDependencies": {
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/multer": "latest",
+    "@types/node": "latest",
+    "@types/morgan": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}
